@@ -48,7 +48,7 @@ function App() {
     content=<p>{error}</p>
   }
   if(isLoading){
-    content=<p>Loading....</p>
+    content=<p>Found no movies..</p>
   }
 
   return (
