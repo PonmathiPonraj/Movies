@@ -2,14 +2,12 @@ import { useRef } from 'react';
 import classes from './AddMovie.module.css';
 
 const AddMovie = (props) => {
-    const titleRef = useRef('');
-    const openingTextRef = useRef('');
-    const releaseDateRef = useRef('');
+    const releaseDateRef = useRef();
+    const titleRef = useRef(null);
+    const openingTextRef = useRef(null);
 
-    function submitHandler(event) {
+    function submitHandler(event){
         event.preventDefault();
-
-    // could add validation here...
 
         const movie = {
             title: titleRef.current.value,
@@ -20,20 +18,29 @@ const AddMovie = (props) => {
     }
 
     return(
-        <form onSubmit={submitHandler}>
-            <div className={classes.control}>
-                <label htmlFor='title'>Title</label>
-                <input type='text' id='title' ref={titleRef} />
+        <form onSubmit={submitHandler} className={classes.addMovieForm}>
+            <div>
+                <label htmlFor="title" className={classes.label}>
+                    Title
+                </label>
+                <input type="text" id="title" ref={titleRef} />
             </div>
-            <div className={classes.control}>
-                <label htmlFor='opening-text'>Opening Text</label>
-                <textarea rows='5' id='opening-text' ref={openingTextRef}></textarea>
+            <br />
+            <div>
+                <label htmlFor="opening-text" className={classes.label}>
+                    Opening Text
+                </label>
+                <textarea rows="5" id="opening-text" ref={openingTextRef}></textarea>
             </div>
-            <div className={classes.control}>
-                <label htmlFor='date'>Release Date</label>
-                <input type='text' id='date' ref={releaseDateRef} />
+            <br />
+            <div>
+                <label htmlFor="date" className={classes.label}>
+                    Release Date
+                </label>
+                <input type="text" id="date" ref={releaseDateRef} />
             </div>
-            <button>Add Movie</button>
+            <br />
+            <button className={classes.addMoviesButton}>Add Movies</button>
         </form>
     );
 };
